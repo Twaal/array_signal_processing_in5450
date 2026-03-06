@@ -1,0 +1,81 @@
+% IN5450/IN9450 Beamer template
+% Expected structure:
+%   Project_X/
+%     -presentation/
+%       figs/
+%       presentation.tex   (generated from this template)
+%
+% Build (from presentation folder):
+%   pdflatex -interaction=nonstopmode -halt-on-error presentation.tex
+
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\graphicspath{{figs/}}
+
+% Figure helpers (keeps plots within the slide)
+\newcommand{\fullfig}[2][]{%
+  \centering
+  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio,#1]{#2}%
+}
+\newcommand{\colfig}[2][]{%
+  \includegraphics[width=\linewidth,height=0.58\textheight,keepaspectratio,#1]{#2}%
+}
+
+\title[{{SHORT_TITLE}}]{ {{TITLE}} }
+\author{ {{AUTHOR}} }
+\institute{University of Oslo}
+\date{ {{DATE}} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Agenda}
+  \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Problem statement}
+\begin{itemize}
+  \item Briefly summarize the assignment goals.
+  \item Mention methods: simulation, histogram PDF estimation, comparing to theory.
+  \item Mention deliverables: key plots + required derivations.
+\end{itemize}
+\end{frame}
+
+\section{Main results}
+
+\begin{frame}{Example figure (auto-fit)}
+% Put an image in Project_X/figs/ and reference it like this:
+% \fullfig{my_plot.png}
+\IfFileExists{replace_me.png}{
+  \fullfig{replace_me.png}
+}{
+  \centering
+  \vspace{1em}
+  {\Large Add a figure in \texttt{figs/} and update this slide.}
+}
+\end{frame}
+
+\section*{Summary}
+\begin{frame}{Summary}
+\begin{itemize}
+  \item Key result 1
+  \item Key result 2
+  \item Key result 3
+\end{itemize}
+\end{frame}
+
+\end{document}
