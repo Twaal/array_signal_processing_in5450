@@ -1,6 +1,3 @@
-%
-% Task 4: Grating lobes - M=24 element ULA with different element spacings
-%
 c = 1500;
 f0 = 3e6;
 lambda = c/f0;

@@ -1,0 +1,26 @@
+\frametitle{Code - Element directivity (Tasks 12-13)}
+\vspace{-0.3em}
+\begin{lstlisting}
+% Element response for rectangular element of width d:
+% H_e(kx) = sinc(kx*d/(2*pi))  (MATLAB sinc includes pi factor)
+elem_resp = @(d) sinc(kx * d / (2*pi));
+
+for di = 1:2
+    d = d_list(di);   % lambda, 2*lambda
+    xpos = (-(M-1)/2 : (M-1)/2).' * d;
+    w = ones(M,1) / M;
+
+    W_array = beampattern(xpos, kx, w);   % array factor
+    He      = elem_resp(d);               % element pattern
+    W_total = W_array .* He;              % total response
+end
+
+% Steering: shift kx by steering direction
+for si = 1:length(steer_angles)
+    theta_s = deg2rad(steer_angles(si));
+    kx_steer = 2*pi/lambda * (u - sin(theta_s));
+    W_steered = beampattern(xpos, kx_steer, w) .* He;
+end
+\end{lstlisting}
+
+\scriptsize Total response = array factor $\times$ element pattern. Steering shifts $W(k_x)$ but $H_e(k_x)$ stays fixed $\Rightarrow$ GLs reappear when steered away from broadside.

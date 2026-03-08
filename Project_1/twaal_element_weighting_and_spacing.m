@@ -1,6 +1,3 @@
-%
-% Tasks 5-8: Kaiser windowing, non-uniform array, steering
-%
 c = 1500;
 f0 = 3e6;
 lambda = c/f0;
@@ -9,7 +6,7 @@ M = 24;
 u  = linspace(-1, 1, 10000);
 kx = 2*pi/lambda * u;
 
-%% Task 5: Kaiser window, d = lambda/2, vary beta 0 to 5
+%% Task 5
 d = lambda/2;
 xpos = (0:M-1).' * d;
 
@@ -51,7 +48,7 @@ cb = colorbar; cb.Label.String = '\beta';
 subplot(2,1,2)
 ylim([-60 0]); grid on; xlabel('\theta [deg]'); ylabel('[dB]')
 
-%% Task 6: Non-uniform array (Case B)
+%% Task 6
 n = 1:12;
 d_half = 1/2;
 e_n = [-0.017 -0.538 -0.617 -1.0 -1.142 -1.372 -1.487 -1.555 -1.537 -1.3 -0.772 -0.242];
@@ -108,7 +105,7 @@ for i = 1:3
     end
 end
 
-%% Task 7: Steering of Case B array
+%% Task 7
 % Plot unsteered over extended u range [-2, 2] to show grating lobe behavior
 u_ext  = linspace(-2, 2, 20000);
 kx_ext = 2*pi/lambda * u_ext;
@@ -139,7 +136,7 @@ for i = 1:length(steer_angles)
 end
 sgtitle('Task 7: Case B – steered responses')
 
-%% Task 8: -3 and -6 dB beamwidth vs steering angle for Case B
+%% Task 8
 steer_deg = -60:2:60;
 BW3  = zeros(size(steer_deg));
 BW6  = zeros(size(steer_deg));
