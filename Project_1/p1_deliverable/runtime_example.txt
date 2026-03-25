@@ -1,0 +1,76 @@
+==============================================
+  IN5450 Coursework - Runtime example
+  08-Mar-2026 17:27:56
+==============================================
+
+
+--- Tasks 1-2: Diffraction from line aperture ---
+
+--- Task 4: Grating lobes ---
+d = \lambda/4:  -3dB BW = 8.45 deg,  -6dB BW = 11.51 deg,  max SL = -13.2 dB
+d = \lambda/2:  -3dB BW = 4.21 deg,  -6dB BW = 5.74 deg,  max SL = -13.2 dB
+d = \lambda:  analyzeBP failed (grating lobe at edge of visible region)
+d = 2\lambda:  analyzeBP failed (grating lobe at edge of visible region)
+
+--- Tasks 5-8: Element weighting and spacing ---
+beta    -3dB BW(deg)  -6dB BW(deg)  max SL(dB)  WNG(dB)   
+0.0     4.21          5.74          -13.2       13.8      
+0.5     4.25          5.81          -13.6       13.8      
+1.0     4.37          5.97          -14.7       13.8      
+1.5     4.55          6.23          -16.6       13.7      
+2.0     4.78          6.57          -19.0       13.6      
+2.5     5.03          6.94          -21.8       13.4      
+3.0     5.33          7.35          -25.0       13.2      
+3.5     5.61          7.76          -28.3       12.9      
+4.0     5.88          8.18          -31.7       12.7      
+4.5     6.16          8.57          -34.9       12.5      
+5.0     6.43          8.96          -38.0       12.3      
+
+Array comparison (aperture, WNG, beamwidths):
+Array             Aperture(mm)  WNG(dB)     -3dB(deg)     -6dB(deg)     maxSL(dB) 
+Uniform d=l/2     5.8         13.8        4.21          5.74          -13.2     
+Kaiser b=3        5.8         13.2        5.33          7.35          -25.0     
+Case B            5.9         13.8        4.55          6.25          -17.9     
+
+--- Task 9: Thinned arrays ---
+
+--- N = 25 active elements ---
+  -3dB BW:        mean = 0.95 deg,  std = 0.07 deg
+  Max sidelobe:   mean = -7.6 dB,   std = 0.9 dB
+  Mean sidelobe:  mean = -17.4 dB,   std = 0.4 dB
+
+--- N = 50 active elements ---
+  -3dB BW:        mean = 0.99 deg,  std = 0.05 deg
+  Max sidelobe:   mean = -11.6 dB,   std = 1.3 dB
+  Mean sidelobe:  mean = -22.1 dB,   std = 0.4 dB
+
+--- N = 75 active elements ---
+  -3dB BW:        mean = 0.99 deg,  std = 0.03 deg
+  Max sidelobe:   mean = -13.2 dB,   std = 1.4 dB
+  Mean sidelobe:  mean = -26.4 dB,   std = 0.4 dB
+
+--- Dense array (N = 101) ---
+  -3dB BW:       1.00 deg
+  Max sidelobe:  -13.3 dB
+  Mean sidelobe: -40.7 dB
+
+--- Fig2: ref (-12.0 dB) (N = 25) ---
+  -3dB BW:       1.41 deg
+  Max sidelobe:  -12.0 dB
+  Mean sidelobe: -16.9 dB
+
+--- Fig3: min BW (-12.1 dB) (N = 25) ---
+  -3dB BW:       1.18 deg
+  Max sidelobe:  -12.1 dB
+  Mean sidelobe: -16.2 dB
+
+--- Fig4: min SL (-12.4 dB) (N = 25) ---
+  -3dB BW:       1.43 deg
+  Max sidelobe:  -12.4 dB
+  Mean sidelobe: -16.8 dB
+
+--- Tasks 12-13: Element directivity ---
+
+==============================================
+  All tasks complete.
+==============================================

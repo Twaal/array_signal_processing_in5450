@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2026.2.5)  8 MAR 2026 19:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2026.2.5)  9 MAR 2026 00:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1122,25 +1122,38 @@ LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <5.5> not available
 [4
 
 ]
-<figs/image-22.png, id=109, 939.51pt x 639.38875pt>
-File: figs/image-22.png Graphic file (type png)
-<use figs/image-22.png>
-Package pdftex.def Info: figs/image-22.png  used on input line 155.
-(pdftex.def)             Requested size: 197.73299pt x 134.56828pt.
+<figs/image-24.png, id=109, 939.51pt x 639.38875pt>
+File: figs/image-24.png Graphic file (type png)
+<use figs/image-24.png>
+Package pdftex.def Info: figs/image-24.png  used on input line 167.
+(pdftex.def)             Requested size: 122.2266pt x 83.18199pt.
 <figs/image-23.png, id=110, 939.51pt x 630.355pt>
 File: figs/image-23.png Graphic file (type png)
 <use figs/image-23.png>
-Package pdftex.def Info: figs/image-23.png  used on input line 155.
-(pdftex.def)             Requested size: 200.57147pt x 134.57146pt.
+Package pdftex.def Info: figs/image-23.png  used on input line 167.
+(pdftex.def)             Requested size: 123.97556pt x 83.18018pt.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4.5> not available
+(Font)              size <4> substituted on input line 167.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/bx/n' in size <4.5> not available
+(Font)              size <4> substituted on input line 167.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/m/it' in size <4.5> not available
+(Font)              size <4> substituted on input line 167.
+
 
 
 [5
 
- <./figs/image-22.png (PNG copy)> <./figs/image-23.png (PNG copy)>]
-<figs/image-6.png, id=118, 2403.98125pt x 699.61375pt>
+ <./figs/image-24.png (PNG copy)> <./figs/image-23.png (PNG copy)>]
+<figs/image-6.png, id=121, 2403.98125pt x 699.61375pt>
 File: figs/image-6.png Graphic file (type png)
 <use figs/image-6.png>
-Package pdftex.def Info: figs/image-6.png  used on input line 177.
+Package pdftex.def Info: figs/image-6.png  used on input line 189.
 (pdftex.def)             Requested size: 436.73296pt x 127.09932pt.
 
 
@@ -1154,10 +1167,10 @@ Package pdftex.def Info: figs/image-6.png  used on input line 177.
 [7
 
 ]
-<figs/image-7.png, id=133, 950.55125pt x 629.35126pt>
+<figs/image-7.png, id=136, 950.55125pt x 629.35126pt>
 File: figs/image-7.png Graphic file (type png)
 <use figs/image-7.png>
-Package pdftex.def Info: figs/image-7.png  used on input line 222.
+Package pdftex.def Info: figs/image-7.png  used on input line 228.
 (pdftex.def)             Requested size: 277.16124pt x 183.5059pt.
 
 
@@ -1175,55 +1188,55 @@ Package pdftex.def Info: figs/image-7.png  used on input line 222.
 [10
 
 ]
-<figs/image-8.png, id=153, 950.55125pt x 629.35126pt>
+<figs/image-8.png, id=156, 950.55125pt x 629.35126pt>
 File: figs/image-8.png Graphic file (type png)
 <use figs/image-8.png>
-Package pdftex.def Info: figs/image-8.png  used on input line 310.
+Package pdftex.def Info: figs/image-8.png  used on input line 314.
 (pdftex.def)             Requested size: 203.24771pt x 134.56844pt.
 
 
 [11
 
  <./figs/image-8.png (PNG copy)>]
-<figs/image-9.png, id=159, 939.51pt x 308.15125pt>
+<figs/image-9.png, id=161, 939.51pt x 308.15125pt>
 File: figs/image-9.png Graphic file (type png)
 <use figs/image-9.png>
-Package pdftex.def Info: figs/image-9.png  used on input line 329.
+Package pdftex.def Info: figs/image-9.png  used on input line 333.
 (pdftex.def)             Requested size: 209.63167pt x 68.75739pt.
-<figs/image-10.png, id=160, 950.55125pt x 644.4075pt>
+<figs/image-10.png, id=162, 950.55125pt x 644.4075pt>
 File: figs/image-10.png Graphic file (type png)
 <use figs/image-10.png>
-Package pdftex.def Info: figs/image-10.png  used on input line 329.
+Package pdftex.def Info: figs/image-10.png  used on input line 333.
 (pdftex.def)             Requested size: 198.50482pt x 134.57243pt.
 
 
 [12
 
  <./figs/image-9.png (PNG copy)> <./figs/image-10.png (PNG copy)>]
-<figs/image-11.png, id=165, 955.57pt x 627.34375pt>
+<figs/image-11.png, id=167, 955.57pt x 627.34375pt>
 File: figs/image-11.png Graphic file (type png)
 <use figs/image-11.png>
-Package pdftex.def Info: figs/image-11.png  used on input line 341.
+Package pdftex.def Info: figs/image-11.png  used on input line 343.
 (pdftex.def)             Requested size: 279.51404pt x 183.50449pt.
 
 
 [13
 
  <./figs/image-11.png (PNG copy)>]
-<figs/image-12.png, id=172, 958.58125pt x 627.34375pt>
+<figs/image-12.png, id=174, 958.58125pt x 627.34375pt>
 File: figs/image-12.png Graphic file (type png)
 <use figs/image-12.png>
-Package pdftex.def Info: figs/image-12.png  used on input line 366.
+Package pdftex.def Info: figs/image-12.png  used on input line 368.
 (pdftex.def)             Requested size: 139.75862pt x 91.46506pt.
-<figs/image-13.png, id=173, 958.58125pt x 627.34375pt>
+<figs/image-13.png, id=175, 958.58125pt x 627.34375pt>
 File: figs/image-13.png Graphic file (type png)
 <use figs/image-13.png>
-Package pdftex.def Info: figs/image-13.png  used on input line 366.
+Package pdftex.def Info: figs/image-13.png  used on input line 368.
 (pdftex.def)             Requested size: 139.75862pt x 91.46506pt.
-<figs/image-14.png, id=174, 958.58125pt x 627.34375pt>
+<figs/image-14.png, id=176, 958.58125pt x 627.34375pt>
 File: figs/image-14.png Graphic file (type png)
 <use figs/image-14.png>
-Package pdftex.def Info: figs/image-14.png  used on input line 366.
+Package pdftex.def Info: figs/image-14.png  used on input line 368.
 (pdftex.def)             Requested size: 139.75862pt x 91.46506pt.
 
 
@@ -1231,7 +1244,7 @@ Package pdftex.def Info: figs/image-14.png  used on input line 366.
 
  <./figs/image-12.png (PNG copy)> <./figs/image-13.png (PNG copy)> <./figs/imag
 e-14.png (PNG copy)>]
-<figs/image-16.png, id=179, 958.58125pt x 627.34375pt>
+<figs/image-16.png, id=181, 958.58125pt x 627.34375pt>
 File: figs/image-16.png Graphic file (type png)
 <use figs/image-16.png>
 Package pdftex.def Info: figs/image-16.png  used on input line 406.
@@ -1248,7 +1261,7 @@ Package pdftex.def Info: figs/image-16.png  used on input line 406.
 [16
 
 ]
-<figs/image-19.png, id=190, 935.495pt x 644.4075pt>
+<figs/image-19.png, id=192, 935.495pt x 644.4075pt>
 File: figs/image-19.png Graphic file (type png)
 <use figs/image-19.png>
 Package pdftex.def Info: figs/image-19.png  used on input line 458.
@@ -1258,7 +1271,7 @@ Package pdftex.def Info: figs/image-19.png  used on input line 458.
 [17
 
  <./figs/image-19.png (PNG copy)>]
-<figs/image-20.png, id=196, 927.465pt x 640.3925pt>
+<figs/image-20.png, id=198, 927.465pt x 640.3925pt>
 File: figs/image-20.png Graphic file (type png)
 <use figs/image-20.png>
 Package pdftex.def Info: figs/image-20.png  used on input line 475.
@@ -1302,47 +1315,49 @@ Package rerunfilecheck Info: File `presentation_p1.out' has not changed.
 (rerunfilecheck)             Checksum: D7B5BE4CFB1F18FA80E3212E1AC5596C;1450.
  ) 
 Here is how much of TeX's memory you used:
- 25281 strings out of 468134
- 477814 string characters out of 5430741
- 1300015 words of memory out of 5000000
- 53330 multiletter control sequences out of 15000+600000
- 649158 words of font info for 93 fonts, out of 8000000 for 9000
+ 25288 strings out of 468134
+ 478011 string characters out of 5430741
+ 1300013 words of memory out of 5000000
+ 53336 multiletter control sequences out of 15000+600000
+ 649919 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,392b,2089s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi
 0600.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecrm0900.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ecsi0900.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi450\ectt0800.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi375\ectt0800.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\theod\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\theod\AppData\Local\MiKT
-eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx0600.pk> <C:\Users\theod\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\theod\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx0900.pk> <C:\Users\theod\
-AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0500.pk> <C:\Users\
-theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0600.pk> <C:\
-Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0900.pk
-> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1
-095.pk><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cmextra/cmex7.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/theod/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/theod/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/theod/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/theod/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users
-/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb
-><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mssi8.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmssi9.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmsy5.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/theod/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/theod/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on presentation_p1.pdf (20 pages, 2410137 bytes).
+/dpi450\ectt0800.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi480\ecsi0500.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi480\ecss0500.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi480\ecsx0500.pk> <C:\Users\theod\AppData\Local\MiKTeX\fon
+ts/pk/ljfour/jknappen/ec/dpi375\ectt0800.pk> <C:\Users\theod\AppData\Local\MiKT
+eX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\theod\AppData\Loca
+l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\theod\AppDat
+a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx0600.pk> <C:\Users\theod\
+AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\
+theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx0900.pk> <C:\
+Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0500.pk
+> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0
+600.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecss0900.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
+dpi600\ecss1095.pk><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cmextra/cmex7.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/theod/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/theod/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/theod/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/the
+od/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/U
+sers/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.p
+fb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmssi10.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmssi8.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmssi9.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/theod/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/theod/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/theod/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam7.pfb>
+Output written on presentation_p1.pdf (20 pages, 2686774 bytes).
 PDF statistics:
- 750 PDF objects out of 1000 (max. 8388607)
+ 785 PDF objects out of 1000 (max. 8388607)
  49 named destinations out of 1000 (max. 500000)
  235 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,7 +2,7 @@
 \vspace{-0.3em}
 \begin{lstlisting}
 % Element response for rectangular element of width d:
-% H_e(kx) = sinc(kx*d/(2*pi))  (MATLAB sinc includes pi factor)
+% H_e(kx) = sinc(kx*d/(2*pi))
 elem_resp = @(d) sinc(kx * d / (2*pi));
 
 for di = 1:2
@@ -23,4 +23,4 @@ for si = 1:length(steer_angles)
 end
 \end{lstlisting}
 
-\scriptsize Total response = array factor $\times$ element pattern. Steering shifts $W(k_x)$ but $H_e(k_x)$ stays fixed $\Rightarrow$ GLs reappear when steered away from broadside.
+\scriptsize Total response = array factor $\times$ element pattern. Steering shifts $W(k_x)$ but $H_e(k_x)$ stays fixed, so grating lobes reappear when steered away from broadside.

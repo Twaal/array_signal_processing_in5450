@@ -136,22 +136,34 @@ X_far = r_far*sin(us);
 
 % -- SLIDE: Task 2 --
 \begin{frame}{Task 2 - 2D field \& near-/far-field boundary}
-\vspace{-0.3em}
-\textbf{NF/FF limit:} For a line aperture, $z_R = D^2/(4\lambda) = 100\lambda = 5$\,cm \scriptsize(differs from piston formula $D^2/\lambda$).
-
-\normalsize
+\vspace{-0.5em}
 \begin{columns}[T]
 \column{0.48\textwidth}
-\colfig{image-22.png}
-\scriptsize 2D field: beam confined near aperture, spreading with familiar lobe structure at larger $z$.
-\column{0.48\textwidth}
-\colfig{image-23.png}
-\scriptsize On-axis ($x=0$): amplitude oscillates in NF (path-length interference), decays as $1/\sqrt{z}$ beyond $z_R$.
-\end{columns}
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{image-24.png}\\[-2pt]
+{\scriptsize 2D field: beam confined near aperture, spreading at larger $z$.}
 
 \smallskip
-\scriptsize \textbf{At $r=z_R$:} Angular response still shows NF artifacts; sidelobes not fully stabilised.\\
-\textbf{At $r=10z_R$:} Smooth sinc pattern, first SL at $-13.2$\,dB (rectangular window value).
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{image-23.png}\\[-2pt]
+{\scriptsize On-axis: amplitude oscillates in NF, decays as $1/\!\sqrt{z}$ beyond $z_R$.}
+\column{0.48\textwidth}
+\scriptsize
+\textbf{Derivation:}
+$$\Delta\phi_\text{max} = \frac{\pi D^2}{4\lambda z}$$
+
+\vspace{-0.6em}
+Setting $\Delta\phi_\text{max}=\pi/2$ (path diff.\ $=\lambda/4$):
+$$\boxed{z_R = \frac{D^2}{4\lambda}} = 100\lambda = 5\text{\,cm}$$
+
+\vspace{-0.3em}
+\scriptsize Differs from piston formula $2D^2/\lambda$ which uses a stricter phase criterion for 2D apertures.
+
+\medskip
+\textbf{At $r\!=\!z_R$:} NF artifacts; sidelobes not stabilised.\\[1pt]
+\textbf{At $r\!=\!10z_R$:} Smooth sinc, first SL $=-13.2$\,dB.
+
+\medskip
+{\fontsize{4.5pt}{5.5pt}\selectfont \textbf{Ref:} S.~Holm, \emph{IN5450 Diffraction: from waves to signal processing}, UiO, 2019.}
+\end{columns}
 \end{frame}
 
 % ==================================================================
@@ -169,8 +181,8 @@ X_far = r_far*sin(us);
 \vspace{-0.5em}
 \scriptsize
 \begin{itemize}\setlength\itemsep{0pt}
-  \item $d=\lambda/4$: Wide main lobe ($8.5^\circ$), no grating lobes; small aperture $\Rightarrow$ poor resolution.
-  \item $d=\lambda/2$: BW $\approx4.2^\circ$, max SL $=-13.2$\,dB. No grating lobes - classic design criterion.
+  \item $d=\lambda/4$: Wide main lobe ($8.5^\circ$), no grating lobes; small aperture gives poor resolution.
+  \item $d=\lambda/2$: BW $\approx4.2^\circ$, max SL $=-13.2$\,dB. No grating lobes gives good balance.
   \item $d=\lambda$: Grating lobe at $u=\pm1$ ($\theta=\pm90^\circ$). Spatial Nyquist violated.
   \item $d=2\lambda$: Multiple grating lobes at $\Delta u = \lambda/d = 0.5$. Ambiguous direction finding.
 \end{itemize}
@@ -189,13 +201,7 @@ for i = 1:4
     xpos = (0:M-1).' * d;           % ULA positions
     W    = beampattern(xpos, kx, weights);
 
-    subplot(4,1,i)
-    plot(u, 20*log10(abs(W)/max(abs(W))))
-    ylim([-60 0]); grid on
-
-    Result = analyzeBP(u, W);       % -3/-6 dB BW + max SL
-    fprintf('d = %s: -3dB BW = %.2f deg, max SL = %.1f dB\n', ...
-        labels{i}, rad2deg(Result.Three_dB), Result.maxSL);
+    Result = analyzeBP(u, W);
 end
 \end{lstlisting}
 
@@ -265,8 +271,6 @@ for i = 1:length(betas)
     WNG = 1 / sum(w.^2);
 
     Result = analyzeBP(u, W);
-    fprintf('beta=%.1f: -3dB=%.2f deg, maxSL=%.1f dB, WNG=%.1f dB\n',...
-        betas(i), rad2deg(Result.Three_dB), Result.maxSL, 10*log10(WNG));
 end
 \end{lstlisting}
 
@@ -299,13 +303,13 @@ Case B & 13.8 & $4.55^\circ$ & $-17.9$ \\
 \end{tabular}
 
 \smallskip\normalsize
-Case B uses \textbf{unity weights} $\Rightarrow$ full WNG.
+Case B uses uniform weights and achieves full WNG, but element positions are optimised to reduce SL. BW is slightly wider than uniform but much narrower than Kaiser.
 
 \smallskip
 $\approx 5$\,dB SL improvement over uniform with only $0.3^\circ$ BW cost.
 
 \smallskip
-Optimising element \emph{positions} reduces SL without sacrificing noise robustness.
+Optimising element positions reduces SL without sacrificing noise robustness.
 \end{columns}
 \end{frame}
 
@@ -320,11 +324,11 @@ Optimising element \emph{positions} reduces SL without sacrificing noise robustn
 \column{0.48\textwidth}
 \textbf{Unsteered, $u\in[-2,2]$:}
 \colfig{image-9.png}
-\scriptsize Outside the visible region ($|u|>1$) the beampattern continues. Non-uniform positions break strict periodicity but structure remains. When steered, this structure can enter the visible region.
+\scriptsize Outside the visible region the beampattern continues. When steered, this structure can enter the visible region.
 \column{0.48\textwidth}
 \textbf{Steered} ($\theta_s = 0^\circ,20^\circ,40^\circ,60^\circ$):
 \colfig{image-10.png}
-\scriptsize Main lobe broadens $\propto 1/\cos\theta_s$ (projected aperture shrinks). SLs grow at large steering angles. Effect is fundamental to all linear arrays.
+\scriptsize Main lobe broadens and SLs grow at large steering angles.
 \end{columns}
 \end{frame}
 
@@ -335,9 +339,7 @@ Optimising element \emph{positions} reduces SL without sacrificing noise robustn
 
 \vspace{-0.3em}
 \scriptsize
-\textbf{Top:} BW in degrees increases $\propto 1/\cos\theta_s$.
-\textbf{Bottom:} BW in $\sin\theta$ is approximately constant - the broadening in degrees is purely geometric.
-The array's resolving power in direction-cosine space is independent of steering direction. This holds for any linear array.
+\textbf{Result:} BW increases proportionally to steering angle magnitude.
 \end{frame}
 
 % ==================================================================
@@ -397,12 +399,10 @@ Min SL    & $1.43^\circ$ & $-12.4$ & $-16.8$ \\
 
 \column{0.45\textwidth}
 \colfig{image-16.png}
-\scriptsize Optimal arrays (coloured) vs.\ dense (red).
 \end{columns}
 
 \smallskip
 \scriptsize
-\textbf{Key:} BW unchanged (aperture preserved). Optimised placement achieves ${\approx}5$\,dB better max SL than random thinning, trading slightly wider BW for uniformly spread sidelobes.
 \end{frame}
 
 % -- SLIDE: Code 9 --
@@ -453,7 +453,7 @@ end
 \scriptsize
 \begin{itemize}\setlength\itemsep{0pt}
   \item \textbf{$d=\lambda$:} Element response zero at $u=\pm1$ coincides with grating lobe $\Rightarrow$ suppressed at broadside. Element envelope spans full visible region.
-  \item \textbf{$d=2\lambda$:} Element zeros at $u=\pm0.5,\pm1$ coincide with grating lobes $\Rightarrow$ also suppressed at broadside. But element BW is narrow ($-3$\,dB at $u\approx0.22$, i.e.\ $\approx13^\circ$), reducing usable FoV.
+  \item \textbf{$d=2\lambda$:} Element zeros at $u=\pm0.5,\pm1$ coincide with grating lobes $\Rightarrow$ also suppressed at broadside.
 \end{itemize}
 \end{frame}
 
@@ -464,10 +464,10 @@ end
 
 \vspace{-0.3em}
 \scriptsize
-Steering shifts the array factor in $u$-space, but $H_e$ is \textbf{fixed} (elements don't rotate).
+Steering shifts the array factor in $u$-space, but $H_e$ is \textbf{fixed} since elements dont move.
 
 \begin{itemize}\setlength\itemsep{0pt}
-  \item \textbf{$d=\lambda$:} Grating lobes shift away from element zeros $\Rightarrow$ reappear. At $\theta_s=60^\circ$ a GL is partially visible but still attenuated. Usable scan $\approx\pm30^\circ\text{-}40^\circ$.
+  \item \textbf{$d=\lambda$:} Grating lobes shift away from element zeros and reappear. At $\theta_s=60^\circ$ a GL is partially visible but still attenuated.
   \item \textbf{$d=2\lambda$:} At $\theta_s=20^\circ$ the first GL near broadside exceeds the steered main lobe - element pattern works \emph{against} the beam. Usable scan $\lesssim 10^\circ$.
 \end{itemize}
 
@@ -479,7 +479,7 @@ Steering shifts the array factor in $u$-space, but $H_e$ is \textbf{fixed} (elem
 \vspace{-0.3em}
 \begin{lstlisting}
 % Element response for rectangular element of width d:
-% H_e(kx) = sinc(kx*d/(2*pi))  (MATLAB sinc includes pi factor)
+% H_e(kx) = sinc(kx*d/(2*pi))
 elem_resp = @(d) sinc(kx * d / (2*pi));
 
 for di = 1:2
@@ -500,7 +500,7 @@ for si = 1:length(steer_angles)
 end
 \end{lstlisting}
 
-\scriptsize Total response = array factor $\times$ element pattern. Steering shifts $W(k_x)$ but $H_e(k_x)$ stays fixed $\Rightarrow$ GLs reappear when steered away from broadside.
+\scriptsize Total response = array factor $\times$ element pattern. Steering shifts $W(k_x)$ but $H_e(k_x)$ stays fixed, so grating lobes reappear when steered away from broadside.
 \end{frame}
 
 % ==================================================================
@@ -514,9 +514,9 @@ end
   \item \textbf{Grating lobes (4):} Appear for $d \ge \lambda$; $d = \lambda/2$ is the aliasing-free limit.
   \item \textbf{Kaiser window (5):} ${\sim}12$\,dB SL suppression per $1^\circ$ BW broadening; modest WNG cost.
   \item \textbf{Non-uniform spacing (6):} Case B achieves $-17.9$\,dB SL with unity weights and full WNG.
-  \item \textbf{Steering (7-8):} BW in degrees $\propto 1/\cos\theta_s$; constant in $\sin\theta$.
+  \item \textbf{Steering (7-8):} BW increases with greater magnitude steering angle.
   \item \textbf{Thinning (9):} Preserves BW but raises SL floor; optimised placement ${\approx}5$\,dB better than random.
-  \item \textbf{Element directivity (12-13):} Element response suppresses GLs at broadside; steering breaks the alignment.
+  \item \textbf{Element directivity (12-13):} Element response suppresses grating lobes at broadside; steering breaks the alignment.
 \end{enumerate}
 \end{frame}
 
