@@ -197,7 +197,7 @@ for k = 1:length(Ns_estimates)
 end
 
 %% Export figures
-matlaboutputFolder = 'figures_output';
+outputFolder = 'figures_output';
 if ~exist(outputFolder, 'dir')
     mkdir(outputFolder);
 end
