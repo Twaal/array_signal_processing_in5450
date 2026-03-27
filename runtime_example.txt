@@ -74,3 +74,21 @@ Case B            5.9         13.8        4.55          6.25          -17.9
 ==============================================
   All tasks complete.
 ==============================================
+==============================================
+  IN5450 Project 2 - Runtime example
+  27-Mar-2026 10:56:58
+==============================================
+
+
+--- Generating data (generate_data.m) ---
+Signal 1:       amplitude 1.4142, frequency 1, direction of arrival 0 deg
+Signal 2:       amplitude 1.4142, frequency 1, direction of arrival -10 deg, rel. phase 45 deg
+Noise: standard deviation 1.4142
+Output vector x is size 10 elements by 100 time samples
+
+--- Part A: Tasks 1-7 (twaal_part_a.m) ---
+Exported 13 figures to "figures_output"
+
+==============================================
+  All tasks complete.
+==============================================
