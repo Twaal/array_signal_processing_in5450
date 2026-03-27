@@ -139,12 +139,17 @@ X_far = r_far*sin(us);
 \vspace{-0.5em}
 \begin{columns}[T]
 \column{0.48\textwidth}
-\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{image-24.png}\\[-2pt]
+\includegraphics[width=\linewidth,height=0.22\textheight,keepaspectratio]{image-24.png}\\[-2pt]
 {\scriptsize 2D field: beam confined near aperture, spreading at larger $z$.}
 
 \smallskip
-\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{image-23.png}\\[-2pt]
+\includegraphics[width=\linewidth,height=0.22\textheight,keepaspectratio]{image-23.png}\\[-2pt]
 {\scriptsize On-axis: amplitude oscillates in NF, decays as $1/\!\sqrt{z}$ beyond $z_R$.}
+
+\smallskip
+%% TODO: uncomment when image-23-norm.png is exported from MATLAB figure(2) subplot 3
+%\includegraphics[width=\linewidth,height=0.22\textheight,keepaspectratio]{image-23-norm.png}\\[-2pt]
+%{\scriptsize Normalised (corrected for $1/\!\sqrt{r}$): converges to constant beyond $z_R$.}
 \column{0.48\textwidth}
 \scriptsize
 \textbf{Derivation:}
@@ -160,6 +165,9 @@ $$\boxed{z_R = \frac{D^2}{4\lambda}} = 100\lambda = 5\text{\,cm}$$
 \medskip
 \textbf{At $r\!=\!z_R$:} NF artifacts; sidelobes not stabilised.\\[1pt]
 \textbf{At $r\!=\!10z_R$:} Smooth sinc, first SL $=-13.2$\,dB.
+
+\medskip
+\textbf{Normalised response:} After correcting for $1/\!\sqrt{r}$ spreading, the on-axis response converges to a constant beyond $z_R$, providing a visual alternative NF/FF limit.
 
 \medskip
 {\fontsize{4.5pt}{5.5pt}\selectfont \textbf{Ref:} S.~Holm, \emph{IN5450 Diffraction: from waves to signal processing}, UiO, 2019.}
@@ -339,7 +347,8 @@ Optimising element positions reduces SL without sacrificing noise robustness.
 
 \vspace{-0.3em}
 \scriptsize
-\textbf{Result:} BW increases proportionally to steering angle magnitude.
+\textbf{Result:} BW in degrees increases with steering angle ($\propto 1/\cos\theta_s$),
+but BW in $\sin\theta$ (computed as $\sin\theta_R - \sin\theta_L$) remains approximately constant --- the broadening is a purely geometric projection effect.
 \end{frame}
 
 % ==================================================================
@@ -460,7 +469,14 @@ end
 % -- SLIDE: Task 13 --
 \begin{frame}{Task 13 - Steering with element directivity}
 \vspace{-0.3em}
-\fullfig[height=0.55\textheight]{image-20.png}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\colfig{image-20.png}
+\centering\scriptsize $d = \lambda$
+\column{0.48\textwidth}
+\colfig{Figure_14.png}
+\centering\scriptsize $d = 2\lambda$
+\end{columns}
 
 \vspace{-0.3em}
 \scriptsize
@@ -487,8 +503,8 @@ for di = 1:2
     xpos = (-(M-1)/2 : (M-1)/2).' * d;
     w = ones(M,1) / M;
 
-    W_array = beampattern(xpos, kx, w);   % array factor
-    He      = elem_resp(d);               % element pattern
+    W_array = beampattern(xpos, kx, w).'; % array factor (transpose to row)
+    He      = elem_resp(d);               % element pattern (row)
     W_total = W_array .* He;              % total response
 end
 
@@ -496,7 +512,7 @@ end
 for si = 1:length(steer_angles)
     theta_s = deg2rad(steer_angles(si));
     kx_steer = 2*pi/lambda * (u - sin(theta_s));
-    W_steered = beampattern(xpos, kx_steer, w) .* He;
+    W_steered = beampattern(xpos, kx_steer, w).' .* He;
 end
 \end{lstlisting}
 

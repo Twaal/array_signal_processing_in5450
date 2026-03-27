@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2026.2.5)  25 MAR 2026 15:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2026.2.5)  25 MAR 2026 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./presentation_p1.tex
-(presentation_p1.tex
+**./presentation_p2.tex
+(presentation_p2.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
 (C:\Users\theod\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamer.cls
@@ -889,8 +889,8 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count374
-) (presentation_p1.aux)
-\openout1 = `presentation_p1.aux'.
+) (presentation_p2.aux)
+\openout1 = `presentation_p2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
@@ -972,9 +972,9 @@ fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring OFF on input line 52.
- (presentation_p1.out) (presentation_p1.out)
+ (presentation_p2.out) (presentation_p2.out)
 \@outlinefile=\write5
-\openout5 = `presentation_p1.out'.
+\openout5 = `presentation_p2.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 52.
@@ -1059,255 +1059,214 @@ heorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
 \c@lstlisting=\count381
- (presentation_p1.nav)
+ (presentation_p2.nav)
 
 [1
 
 {C:/Users/theod/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(presentation_p1.toc)
+(presentation_p2.toc)
 
 [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 89.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 88.
 
  (C:\Users\theod\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 89.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 88.
 
 
 (C:\Users\theod\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 89.
+ut line 88.
 
 (C:\Users\theod\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\ot1mathk
 erncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-<figs/image-21.png, id=87, 935.495pt x 632.3625pt>
-File: figs/image-21.png Graphic file (type png)
-<use figs/image-21.png>
-Package pdftex.def Info: figs/image-21.png  used on input line 89.
-(pdftex.def)             Requested size: 199.07198pt x 134.56581pt.
-<figs/farfield.png, id=88, 949.5475pt x 632.3625pt>
-File: figs/farfield.png Graphic file (type png)
-<use figs/farfield.png>
-Package pdftex.def Info: figs/farfield.png  used on input line 89.
-(pdftex.def)             Requested size: 202.06233pt x 134.56581pt.
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/m/n' instead on input line 88.
+
 
 
 [3
 
- <./figs/image-21.png (PNG copy)> <./figs/farfield.png (PNG copy)>]
-\openout4 = `presentation_p1.vrb'.
+]
+<figs/figure_01.pdf, id=111, 777.90625pt x 352.31625pt>
+File: figs/figure_01.pdf Graphic file (type pdf)
+<use figs/figure_01.pdf>
+Package pdftex.def Info: figs/figure_01.pdf  used on input line 101.
+(pdftex.def)             Requested size: 405.17828pt x 183.50655pt.
 
-
-(presentation_p1.vrb
-
-LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 6.
-
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <5.5> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 7.
-
-LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 7.
-
-)
 
 [4
 
-]
-<figs/image-24.png, id=109, 939.51pt x 639.38875pt>
-File: figs/image-24.png Graphic file (type png)
-<use figs/image-24.png>
-Package pdftex.def Info: figs/image-24.png  used on input line 175.
-(pdftex.def)             Requested size: 79.09033pt x 53.82536pt.
-<figs/image-23.png, id=110, 939.51pt x 630.355pt>
-File: figs/image-23.png Graphic file (type png)
-<use figs/image-23.png>
-Package pdftex.def Info: figs/image-23.png  used on input line 175.
-(pdftex.def)             Requested size: 80.22285pt x 53.82472pt.
-
-
-LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4.5> not available
-(Font)              size <4> substituted on input line 175.
-
-
-LaTeX Font Warning: Font shape `T1/cmss/bx/n' in size <4.5> not available
-(Font)              size <4> substituted on input line 175.
-
-
-LaTeX Font Warning: Font shape `T1/cmss/m/it' in size <4.5> not available
-(Font)              size <4> substituted on input line 175.
-
+ <./figs/figure_01.pdf>]
+<figs/figure_02.pdf, id=139, 783.92876pt x 355.3275pt>
+File: figs/figure_02.pdf Graphic file (type pdf)
+<use figs/figure_02.pdf>
+Package pdftex.def Info: figs/figure_02.pdf  used on input line 126.
+(pdftex.def)             Requested size: 209.6301pt x 95.01797pt.
+<figs/figure_03.pdf, id=140, 783.92876pt x 355.3275pt>
+File: figs/figure_03.pdf Graphic file (type pdf)
+<use figs/figure_03.pdf>
+Package pdftex.def Info: figs/figure_03.pdf  used on input line 126.
+(pdftex.def)             Requested size: 209.6301pt x 95.01797pt.
 
 
 [5
 
- <./figs/image-24.png (PNG copy)> <./figs/image-23.png (PNG copy)>]
-<figs/image-6.png, id=121, 2403.98125pt x 699.61375pt>
-File: figs/image-6.png Graphic file (type png)
-<use figs/image-6.png>
-Package pdftex.def Info: figs/image-6.png  used on input line 197.
-(pdftex.def)             Requested size: 436.73296pt x 127.09932pt.
+ <./figs/figure_02.pdf> <./figs/figure_03.pdf>]
+\openout4 = `presentation_p2.vrb'.
 
+ (presentation_p2.vrb
+
+LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 3.
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <5.5> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 5.
+
+LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 5.
+
+)
 
 [6
 
- <./figs/image-6.png (PNG copy)>]
-\openout4 = `presentation_p1.vrb'.
+]
+<figs/figure_04.pdf, id=190, 787.94376pt x 355.3275pt>
+File: figs/figure_04.pdf Graphic file (type pdf)
+<use figs/figure_04.pdf>
+Package pdftex.def Info: figs/figure_04.pdf  used on input line 174.
+(pdftex.def)             Requested size: 209.63368pt x 94.53543pt.
+<figs/figure_05.pdf, id=191, 786.94pt x 355.3275pt>
+File: figs/figure_05.pdf Graphic file (type pdf)
+<use figs/figure_05.pdf>
+Package pdftex.def Info: figs/figure_05.pdf  used on input line 174.
+(pdftex.def)             Requested size: 209.6308pt x 94.65472pt.
 
- (presentation_p1.vrb)
 
 [7
 
-]
-<figs/image-7.png, id=136, 950.55125pt x 629.35126pt>
-File: figs/image-7.png Graphic file (type png)
-<use figs/image-7.png>
-Package pdftex.def Info: figs/image-7.png  used on input line 236.
-(pdftex.def)             Requested size: 277.16124pt x 183.5059pt.
+ <./figs/figure_04.pdf> <./figs/figure_05.pdf>]
+\openout4 = `presentation_p2.vrb'.
 
+ (presentation_p2.vrb)
 
 [8
 
- <./figs/image-7.png (PNG copy)>]
+]
+<figs/figure_06.pdf, id=239, 783.92876pt x 352.31625pt>
+File: figs/figure_06.pdf Graphic file (type pdf)
+<use figs/figure_06.pdf>
+Package pdftex.def Info: figs/figure_06.pdf  used on input line 209.
+(pdftex.def)             Requested size: 408.31517pt x 183.50655pt.
+
 
 [9
 
-]
-\openout4 = `presentation_p1.vrb'.
+ <./figs/figure_06.pdf>]
+<figs/figure_07.pdf, id=263, 783.92876pt x 355.3275pt>
+File: figs/figure_07.pdf Graphic file (type pdf)
+<use figs/figure_07.pdf>
+Package pdftex.def Info: figs/figure_07.pdf  used on input line 235.
+(pdftex.def)             Requested size: 209.6301pt x 95.01797pt.
+<figs/figure_08.pdf, id=264, 789.95125pt x 355.3275pt>
+File: figs/figure_08.pdf Graphic file (type pdf)
+<use figs/figure_08.pdf>
+Package pdftex.def Info: figs/figure_08.pdf  used on input line 235.
+(pdftex.def)             Requested size: 209.63742pt x 94.29688pt.
 
- (presentation_p1.vrb)
 
 [10
 
-]
-<figs/image-8.png, id=156, 950.55125pt x 629.35126pt>
-File: figs/image-8.png Graphic file (type png)
-<use figs/image-8.png>
-Package pdftex.def Info: figs/image-8.png  used on input line 322.
-(pdftex.def)             Requested size: 203.24771pt x 134.56844pt.
+ <./figs/figure_07.pdf> <./figs/figure_08.pdf>]
+\openout4 = `presentation_p2.vrb'.
 
+ (presentation_p2.vrb)
 
 [11
 
- <./figs/image-8.png (PNG copy)>]
-<figs/image-9.png, id=161, 939.51pt x 308.15125pt>
-File: figs/image-9.png Graphic file (type png)
-<use figs/image-9.png>
-Package pdftex.def Info: figs/image-9.png  used on input line 341.
-(pdftex.def)             Requested size: 209.63167pt x 68.75739pt.
-<figs/image-10.png, id=162, 950.55125pt x 644.4075pt>
-File: figs/image-10.png Graphic file (type png)
-<use figs/image-10.png>
-Package pdftex.def Info: figs/image-10.png  used on input line 341.
-(pdftex.def)             Requested size: 198.50482pt x 134.57243pt.
+]
+<figs/figure_09.pdf, id=310, 787.94376pt x 355.3275pt>
+File: figs/figure_09.pdf Graphic file (type pdf)
+<use figs/figure_09.pdf>
+Package pdftex.def Info: figs/figure_09.pdf  used on input line 290.
+(pdftex.def)             Requested size: 209.63368pt x 94.53543pt.
+<figs/figure_10.pdf, id=311, 789.95125pt x 355.3275pt>
+File: figs/figure_10.pdf Graphic file (type pdf)
+<use figs/figure_10.pdf>
+Package pdftex.def Info: figs/figure_10.pdf  used on input line 290.
+(pdftex.def)             Requested size: 209.63742pt x 94.29688pt.
 
 
 [12
 
- <./figs/image-9.png (PNG copy)> <./figs/image-10.png (PNG copy)>]
-<figs/image-11.png, id=167, 955.57pt x 627.34375pt>
-File: figs/image-11.png Graphic file (type png)
-<use figs/image-11.png>
-Package pdftex.def Info: figs/image-11.png  used on input line 352.
-(pdftex.def)             Requested size: 279.51404pt x 183.50449pt.
+ <./figs/figure_09.pdf> <./figs/figure_10.pdf>]
+\openout4 = `presentation_p2.vrb'.
 
+ (presentation_p2.vrb)
 
 [13
 
- <./figs/image-11.png (PNG copy)>]
-<figs/image-12.png, id=174, 958.58125pt x 627.34375pt>
-File: figs/image-12.png Graphic file (type png)
-<use figs/image-12.png>
-Package pdftex.def Info: figs/image-12.png  used on input line 377.
-(pdftex.def)             Requested size: 139.75862pt x 91.46506pt.
-<figs/image-13.png, id=175, 958.58125pt x 627.34375pt>
-File: figs/image-13.png Graphic file (type png)
-<use figs/image-13.png>
-Package pdftex.def Info: figs/image-13.png  used on input line 377.
-(pdftex.def)             Requested size: 139.75862pt x 91.46506pt.
-<figs/image-14.png, id=176, 958.58125pt x 627.34375pt>
-File: figs/image-14.png Graphic file (type png)
-<use figs/image-14.png>
-Package pdftex.def Info: figs/image-14.png  used on input line 377.
-(pdftex.def)             Requested size: 139.75862pt x 91.46506pt.
+]
+<figs/figure_11.pdf, id=359, 857.2025pt x 352.31625pt>
+File: figs/figure_11.pdf Graphic file (type pdf)
+<use figs/figure_11.pdf>
+Package pdftex.def Info: figs/figure_11.pdf  used on input line 328.
+(pdftex.def)             Requested size: 357.18427pt x 146.80524pt.
 
 
 [14
 
- <./figs/image-12.png (PNG copy)> <./figs/image-13.png (PNG copy)> <./figs/imag
-e-14.png (PNG copy)>]
-<figs/image-16.png, id=181, 958.58125pt x 627.34375pt>
-File: figs/image-16.png Graphic file (type png)
-<use figs/image-16.png>
-Package pdftex.def Info: figs/image-16.png  used on input line 415.
-(pdftex.def)             Requested size: 196.52505pt x 128.61586pt.
+ <./figs/figure_11.pdf>]
+<figs/figure_12.pdf, id=383, 784.9325pt x 352.31625pt>
+File: figs/figure_12.pdf Graphic file (type pdf)
+<use figs/figure_12.pdf>
+Package pdftex.def Info: figs/figure_12.pdf  used on input line 340.
+(pdftex.def)             Requested size: 354.31825pt x 159.03543pt.
 
 
 [15
 
- <./figs/image-16.png (PNG copy)>]
-\openout4 = `presentation_p1.vrb'.
+ <./figs/figure_12.pdf>]
+<figs/figure_13.pdf, id=407, 784.9325pt x 352.31625pt>
+File: figs/figure_13.pdf Graphic file (type pdf)
+<use figs/figure_13.pdf>
+Package pdftex.def Info: figs/figure_13.pdf  used on input line 351.
+(pdftex.def)             Requested size: 354.31825pt x 159.03543pt.
 
- (presentation_p1.vrb)
 
 [16
 
-]
-<figs/image-19.png, id=192, 935.495pt x 644.4075pt>
-File: figs/image-19.png Graphic file (type png)
-<use figs/image-19.png>
-Package pdftex.def Info: figs/image-19.png  used on input line 467.
-(pdftex.def)             Requested size: 184.69757pt x 127.2273pt.
+ <./figs/figure_13.pdf>]
+\openout4 = `presentation_p2.vrb'.
 
+ (presentation_p2.vrb)
 
 [17
 
- <./figs/image-19.png (PNG copy)>]
-<figs/image-20.png, id=198, 927.465pt x 640.3925pt>
-File: figs/image-20.png Graphic file (type png)
-<use figs/image-20.png>
-Package pdftex.def Info: figs/image-20.png  used on input line 491.
-(pdftex.def)             Requested size: 194.88661pt x 134.56456pt.
-<figs/Figure_14.png, id=199, 779.5524pt x 362.3136pt>
-File: figs/Figure_14.png Graphic file (type png)
-<use figs/Figure_14.png>
-Package pdftex.def Info: figs/Figure_14.png  used on input line 491.
-(pdftex.def)             Requested size: 209.62552pt x 97.42792pt.
-
+]
 
 [18
 
- <./figs/image-20.png (PNG copy)> <./figs/Figure_14.png (PNG copy)>]
-\openout4 = `presentation_p1.vrb'.
-
-
-(presentation_p1.vrb)
-
-[19
-
-]
-
-[20
-
 ]
 \tf@nav=\write6
-\openout6 = `presentation_p1.nav'.
+\openout6 = `presentation_p2.nav'.
 
 \tf@toc=\write7
-\openout7 = `presentation_p1.toc'.
+\openout7 = `presentation_p2.toc'.
 
 \tf@snm=\write8
-\openout8 = `presentation_p1.snm'.
+\openout8 = `presentation_p2.snm'.
 
- (presentation_p1.aux)
+ (presentation_p2.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
@@ -1317,53 +1276,50 @@ L3 programming layer <2025-07-20>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-Package rerunfilecheck Info: File `presentation_p1.out' has not changed.
-(rerunfilecheck)             Checksum: D7B5BE4CFB1F18FA80E3212E1AC5596C;1450.
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package rerunfilecheck Info: File `presentation_p2.out' has not changed.
+(rerunfilecheck)             Checksum: 9611EF445C2186D70154408E845936DF;1315.
  ) 
 Here is how much of TeX's memory you used:
- 25297 strings out of 468134
- 478223 string characters out of 5430741
- 1300015 words of memory out of 5000000
- 53345 multiletter control sequences out of 15000+600000
- 649919 words of font info for 94 fonts, out of 8000000 for 9000
+ 25214 strings out of 468134
+ 477316 string characters out of 5430741
+ 1196015 words of memory out of 5000000
+ 53268 multiletter control sequences out of 15000+600000
+ 647707 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,123p,392b,2089s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi
-0600.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecrm0900.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi450\ectt0800.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi480\ecsi0500.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi480\ecss0500.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi480\ecsx0500.pk> <C:\Users\theod\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi375\ectt0800.pk> <C:\Users\theod\AppData\Local\MiKT
-eX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\theod\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\theod\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx0600.pk> <C:\Users\theod\
-AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\
-theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx0900.pk> <C:\
-Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0500.pk
-> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0
-600.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecss0900.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
-dpi600\ecss1095.pk><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/cmextra/cmex7.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/theod/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/theod/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/theod/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/the
-od/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/U
-sers/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.p
-fb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmssi10.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmssi8.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmssi9.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/theod/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/theod/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/theod/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on presentation_p1.pdf (20 pages, 2875184 bytes).
+ 128i,11n,123p,392b,1780s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi375\ectt
+0800.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ecsi0600.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecsx0600.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecrm0900.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\theod\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\ecsx0900.pk> <C:\Users\theod\AppData\Local\MiKTeX\fon
+ts/pk/ljfour/jknappen/ec/dpi600\ecss0500.pk> <C:\Users\theod\AppData\Local\MiKT
+eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0600.pk> <C:\Users\theod\AppData\Loca
+l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0900.pk> <C:\Users\theod\AppDat
+a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk><C:/Users/theod/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/
+Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/c
+mex9.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmmi5.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmmi6.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmmi9.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/theod/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/theod/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/theod/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/t
+heod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C
+:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss
+i9.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmsy5.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsy6.pfb><C:/Users/theod/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmsy9.pfb>
+Output written on presentation_p2.pdf (18 pages, 604138 bytes).
 PDF statistics:
- 789 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
- 240 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 891 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
+ 228 words of extra memory for PDF output out of 10000 (max. 10000000)
 

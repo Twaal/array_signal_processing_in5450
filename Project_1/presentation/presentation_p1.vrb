@@ -10,8 +10,8 @@ for di = 1:2
     xpos = (-(M-1)/2 : (M-1)/2).' * d;
     w = ones(M,1) / M;
 
-    W_array = beampattern(xpos, kx, w);   % array factor
-    He      = elem_resp(d);               % element pattern
+    W_array = beampattern(xpos, kx, w).'; % array factor (transpose to row)
+    He      = elem_resp(d);               % element pattern (row)
     W_total = W_array .* He;              % total response
 end
 
@@ -19,7 +19,7 @@ end
 for si = 1:length(steer_angles)
     theta_s = deg2rad(steer_angles(si));
     kx_steer = 2*pi/lambda * (u - sin(theta_s));
-    W_steered = beampattern(xpos, kx_steer, w) .* He;
+    W_steered = beampattern(xpos, kx_steer, w).' .* He;
 end
 \end{lstlisting}
 

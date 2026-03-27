@@ -28,19 +28,25 @@ title('2D diffraction field [dB]');
 %% 2b
 z_ax = 5*dz:dz:r;
 x_ax = zeros(size(z_ax));
-[Resp_ax, ~] = R_S_LinAperture(apX, apZ, x_ax, z_ax, lambda, A0);
+[Resp_ax, normResp_ax] = R_S_LinAperture(apX, apZ, x_ax, z_ax, lambda, A0);
 figure(2); clf;
-subplot(2,1,1)
+subplot(3,1,1)
 plot(z_ax*100, abs(Resp_ax))
 grid on
 xline(z_R*100, '--r', sprintf('z_R = %.1f cm', z_R*100))
 xlabel('z [cm]'); ylabel('Magnitude');
 title('Response along the z-axis (x = 0)');
-subplot(2,1,2)
+subplot(3,1,2)
 plot(z_ax*100, 20*log10(abs(Resp_ax)/max(abs(Resp_ax))))
 grid on; ylim([-40 0])
 xline(z_R*100, '--r', sprintf('z_R = %.1f cm', z_R*100))
 xlabel('z [cm]'); ylabel('Response [dB]');
+subplot(3,1,3)
+plot(z_ax*100, abs(normResp_ax))
+grid on
+xline(z_R*100, '--r', sprintf('z_R = %.1f cm', z_R*100))
+xlabel('z [cm]'); ylabel('Normalised magnitude');
+title('Normalised response (corrected for 1/\surd r spreading)');
 %% 2c
 us = -pi/2:du:pi/2;
 Z_near = z_R*cos(us);

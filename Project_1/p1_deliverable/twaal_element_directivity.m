@@ -25,7 +25,7 @@ for di = 1:2
     w    = ones(M,1) / M;
 
     % Array factor only from task 4
-    W_array = beampattern(xpos, kx, w);
+    W_array = beampattern(xpos, kx, w).';
 
     % Total response = array factor × element response
     He = elem_resp(d);
@@ -71,7 +71,7 @@ for di = 1:2
     for si = 1:length(steer_deg)
         theta_s  = deg2rad(steer_deg(si));
         kx_steer = 2*pi/lambda * (u - sin(theta_s));
-        W_array  = beampattern(xpos, kx_steer, w);
+        W_array  = beampattern(xpos, kx_steer, w).';
         He_fixed = sinc(kx * d / (2*pi));
         W_total  = W_array .* He_fixed;
         W_total_dB = 20*log10(abs(W_total)/max(abs(W_total)));
@@ -90,7 +90,7 @@ for di = 1:2
     subplot(2,1,2); hold on
     theta_s  = deg2rad(60);
     kx_steer = 2*pi/lambda * (u - sin(theta_s));
-    W_array  = beampattern(xpos, kx_steer, w);
+    W_array  = beampattern(xpos, kx_steer, w).';
     He_fixed = sinc(kx * d / (2*pi));
     W_total  = W_array .* He_fixed;
     plot(theta, 20*log10(abs(W_array)/max(abs(W_array))), 'b', 'LineWidth', 1.2, ...

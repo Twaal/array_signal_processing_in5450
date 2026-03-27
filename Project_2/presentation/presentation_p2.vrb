@@ -1,0 +1,28 @@
+\frametitle{Code - Incorrect source count}
+\vspace{-0.3em}
+\begin{lstlisting}
+Ns_estimates = [0, 1, 3];
+
+for k = 1:length(Ns_estimates)
+    Ns_est = Ns_estimates(k);
+    Vn = V(:, Ns_est+1 : end);
+    Ln = dd(Ns_est+1 : end);
+
+    for n = 1:length(theta)
+        DOA = theta(n);
+        phi = -kd * sin(DOA * pi / 180);
+        a   = exp(1i * phi) .^ (0:M-1)';
+
+        % MUSIC
+        P_music_task7(n) = 1 / (a' * (Vn * Vn') * a);
+
+        % Eigenvector
+        P_EV_task7(n) = 1 / (a' * (Vn * diag(1./Ln) * Vn') * a);
+    end
+end
+\end{lstlisting}
+
+\smallskip
+\scriptsize
+Correct $\hat{K}$ is critical: underestimation loses sources, overestimation raises the noise floor
+and can introduce false peaks.

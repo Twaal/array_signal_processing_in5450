@@ -152,9 +152,9 @@ for i = 1:length(steer_deg)
         R = analyzeBP(u, W_steer);
         BW3(i)  = rad2deg(R.Three_dB);
         BW6(i)  = rad2deg(R.Six_dB);
-        % beamwidth in sin(theta) / kx
-        BW3u(i) = sin(deg2rad(BW3(i)/2))*2;   % approx
-        BW6u(i) = sin(deg2rad(BW6(i)/2))*2;
+        % beamwidth in sin(theta): sin(theta_right) - sin(theta_left)
+        BW3u(i) = R.Three_dB_u;
+        BW6u(i) = R.Six_dB_u;
     catch
         BW3(i) = NaN; BW6(i) = NaN; BW3u(i) = NaN; BW6u(i) = NaN;
     end

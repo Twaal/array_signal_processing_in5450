@@ -1,0 +1,400 @@
+% IN5450 Project 2 DOA Estimation
+% Build: pdflatex -interaction=nonstopmode -halt-on-error presentation_p2.tex
+
+\documentclass[aspectratio=169,9pt]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+
+\graphicspath{{figs/}}
+
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{}
+
+% Tighter vertical spacing
+\setlength{\parskip}{2pt plus 1pt}
+
+% Figure helpers
+\newcommand{\fullfig}[2][]{%
+  \centering
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio,#1]{#2}%
+}
+\newcommand{\colfig}[2][]{%
+  \includegraphics[width=\linewidth,height=0.55\textheight,keepaspectratio,#1]{#2}%
+}
+
+% Listing style for MATLAB
+\lstset{
+  language=Matlab,
+  basicstyle=\ttfamily\fontsize{5.5pt}{6.5pt}\selectfont,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red!70!black},
+  breaklines=true,
+  frame=single,
+  numbers=none,
+  columns=flexible
+}
+
+\title[IN5450 Project 2]{Direction of Arrival (DOA) Estimation Methods\\IN5450 Project 2}
+\author{Theodor W\aa lberg}
+\institute{University of Oslo}
+\date{March 2026}
+
+\begin{document}
+
+% ----
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ----
+\begin{frame}{Agenda}
+  \tableofcontents
+\end{frame}
+
+% ==================================================================
+\section{Signal Model \& Setup}
+% ==================================================================
+
+\begin{frame}{Signal model}
+\vspace{-0.3em}
+\textbf{Setup} (from \texttt{generate\_data.m}):
+\begin{itemize}\setlength\itemsep{1pt}
+  \item $M=10$ sensors, ULA with $d=0.5\lambda$
+  \item $N=100$ snapshots
+  \item Two incoherent sources: $\theta_1 = 0^\circ$, $\theta_2 = -10^\circ$
+  \item Both at $\mathrm{SNR} = 0$\,dB, relative phase $\gamma = 45^\circ$
+  \item Additive complex Gaussian noise ($\sigma^2 = 2$)
+\end{itemize}
+
+\medskip
+\textbf{Data model:}
+$$\mathbf{x}(t) = \mathbf{A}\,\mathbf{s}(t) + \mathbf{n}(t), \qquad
+  \mathbf{A} = [\mathbf{a}(\theta_1)\;\;\mathbf{a}(\theta_2)], \qquad
+  [\mathbf{a}(\theta)]_m = e^{-jmkd\sin\theta}$$
+
+\medskip
+\textbf{Sample correlation matrix:}
+$$\hat{\mathbf{R}} = \frac{1}{N}\sum_{t=1}^{N}\mathbf{x}(t)\mathbf{x}^H(t) = \frac{1}{N}\mathbf{X}\mathbf{X}^H$$
+\end{frame}
+
+% ==================================================================
+\section{Correlation Matrix}
+% ==================================================================
+
+\begin{frame}{Task 1 - Sample correlation matrix}
+\vspace{-0.3em}
+\fullfig{figure_01.pdf}
+
+\vspace{-0.3em}
+\scriptsize
+$|\hat{\mathbf{R}}|$ shows the structure expected from a ULA.
+\end{frame}
+
+% ==================================================================
+\section{Conventional Beamformer - DAS}
+% ==================================================================
+
+\begin{frame}{Task 2 - DAS spatial spectrum}
+\vspace{-0.3em}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\colfig{figure_02.pdf}
+\smallskip
+\scriptsize \textbf{dB scale:} Single broad peak near $\theta\approx -5^\circ$.
+The two sources at $0^\circ$ and $-10^\circ$ are \emph{not resolved}.
+
+\column{0.48\textwidth}
+\colfig{figure_03.pdf}
+\smallskip
+\scriptsize \textbf{Linear scale:} Confirms a single merged lobe.
+\end{columns}
+
+\medskip
+\scriptsize
+\textbf{Why unresolved?} The DAS beamwidth for $M\!=\!10$, $d\!=\!\lambda/2$ is $\approx\!11.5^\circ$,
+which exceeds the $10^\circ$.
+\end{frame}
+
+% -- SLIDE: Code Task 2 --
+\begin{frame}[fragile]{Code - DAS beamformer}
+\vspace{-0.3em}
+\begin{lstlisting}
+R = x*x' / N;                     % Sample correlation matrix
+d = 0.5;  kd = 2*pi*d;
+theta = -40:0.25:50;
+
+P_DAS = zeros(size(theta));
+for n = 1:length(theta)
+    DOA = theta(n);
+    phi = -kd * sin(DOA * pi / 180);
+    a   = exp(1i * phi) .^ (0:M-1)';
+    P_DAS(n) = (a' * R * a) / M;
+end
+\end{lstlisting}
+
+\smallskip
+\scriptsize
+$P_\text{DAS}(\theta) = \frac{1}{M}\mathbf{a}^H(\theta)\hat{\mathbf{R}}\,\mathbf{a}(\theta)$.
+The conventional BF applies uniform weights. Resolution is limited by aperture size.
+\end{frame}
+
+% ==================================================================
+\section{Capon / MVDR Beamformer}
+% ==================================================================
+
+\begin{frame}{Task 3 - Capon spatial spectrum}
+\vspace{-0.3em}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\colfig{figure_04.pdf}
+\smallskip
+\scriptsize \textbf{dB scale:} Two distinct peaks visible near $0^\circ$ and $-10^\circ$.
+The Capon BF resolves the sources that DAS could not.
+
+\column{0.48\textwidth}
+\colfig{figure_05.pdf}
+\smallskip
+\scriptsize \textbf{Linear scale:} Clear separation between the two source peaks.
+\end{columns}
+
+\medskip
+\scriptsize
+\textbf{Capon (MVDR):} $P_\text{Capon}(\theta) = \frac{1}{\mathbf{a}^H(\theta)\hat{\mathbf{R}}^{-1}\mathbf{a}(\theta)}$.
+Minimises output power while maintaining unit gain in the look direction $\Rightarrow$ suppresses interference $\Rightarrow$ narrower peaks.
+\end{frame}
+
+% -- SLIDE: Code Task 3 --
+\begin{frame}[fragile]{Code - Capon beamformer}
+\vspace{-0.3em}
+\begin{lstlisting}
+Rinv = inv(R);
+P_capon = zeros(size(theta));
+for n = 1:length(theta)
+    DOA = theta(n);
+    phi = -kd * sin(DOA * pi / 180);
+    a   = exp(1i * phi) .^ (0:M-1)';
+    P_capon(n) = 1 / (a' * Rinv * a);
+end
+\end{lstlisting}
+
+\smallskip
+\scriptsize
+Data-adaptive: uses $\hat{\mathbf{R}}^{-1}$ to place zeros on interferers.
+Resolution exceeds DAS but is still finite.
+\end{frame}
+
+% ==================================================================
+\section{Eigenvalue Decomposition}
+% ==================================================================
+
+\begin{frame}{Eigenvalue distribution of $\hat{\mathbf{R}}$}
+\vspace{-0.3em}
+\fullfig{figure_06.pdf}
+
+\vspace{-0.3em}
+\scriptsize
+\textbf{Two dominant eigenvalues} $\gg$ remaining eight.
+
+The gap between signal and noise eigenvalues enables subspace methods.
+\end{frame}
+
+% ==================================================================
+\section{MUSIC Algorithm}
+% ==================================================================
+
+\begin{frame}{MUSIC spatial spectrum}
+\vspace{-0.3em}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\colfig{figure_07.pdf}
+\smallskip
+\scriptsize \textbf{dB scale:} Sharp peaks at $\theta_1\!=\!0^\circ$ and $\theta_2\!=\!-10^\circ$.
+MUSIC achieves super-resolution.
+
+\column{0.48\textwidth}
+\colfig{figure_08.pdf}
+\smallskip
+\scriptsize \textbf{Linear scale:} Both sources clearly resolved with very narrow peaks.
+\end{columns}
+
+\medskip
+\scriptsize
+$P_\text{MUSIC}(\theta) = \frac{\mathbf{a}^H\mathbf{a}}{\mathbf{a}^H\mathbf{U}_n\mathbf{U}_n^H\mathbf{a}}$.
+MUSIC exploits orthogonality between signal steering vectors and noise subspace:
+$\mathbf{U}_n^H\mathbf{a}(\theta_k) = \mathbf{0}$ at true DOAs $\Rightarrow$ denominator $\to 0$ $\Rightarrow$ sharp peaks.
+\end{frame}
+
+% -- SLIDE: Code Task 5 --
+\begin{frame}[fragile]{Code - MUSIC}
+\vspace{-0.3em}
+\begin{lstlisting}
+[V,D] = eig(R);
+[dd,I] = sort(diag(D));
+dd = flipud(dd);  V = V(:,flipud(I));  % descending order
+
+num_signals = 2;
+Un = V(:, num_signals+1 : end);   % noise subspace
+Pn = Un * Un';
+
+P_music = zeros(size(theta));
+for n = 1:length(theta)
+    DOA = theta(n);
+    phi = -kd * sin(DOA * pi / 180);
+    a   = exp(1i * phi) .^ (0:M-1)';
+    P_music(n) = (a' * a) / (a' * Pn * a);
+end
+\end{lstlisting}
+
+\smallskip
+\scriptsize
+Signal subspace: eigenvectors for the $K\!=\!2$ largest eigenvalues.
+Noise subspace: remaining $M\!-\!K\!=\!8$ eigenvectors. The spectrum peaks where $\mathbf{a}(\theta)$ is orthogonal to $\mathbf{U}_n$.
+\end{frame}
+
+% ==================================================================
+\section{Eigenvector Method}
+% ==================================================================
+
+\begin{frame}{Task 6 - Eigenvector method}
+\vspace{-0.3em}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\colfig{figure_09.pdf}
+\smallskip
+\scriptsize \textbf{dB scale:} Peaks at $0^\circ$ and $-10^\circ$, similar to MUSIC.
+
+\column{0.48\textwidth}
+\colfig{figure_10.pdf}
+\smallskip
+\scriptsize \textbf{Linear scale:} Peak structure comparable to MUSIC with slight amplitude differences.
+\end{columns}
+
+\medskip
+\scriptsize
+\textbf{Eigenvector method:}
+$P_\text{EV}(\theta) = \frac{1}{\mathbf{a}^H(\theta)\hat{\mathbf{R}}_n^{-1}\mathbf{a}(\theta)}$,
+where $\hat{\mathbf{R}}_n^{-1} = \sum_{i=K+1}^{M}\frac{1}{\lambda_i}\mathbf{v}_i\mathbf{v}_i^H$.
+
+Compared to MUSIC, the EV method weights each noise eigenvector by $1/\lambda_i$,
+giving more weight to eigenvectors with smaller eigenvalues, which can sharpen peaks.
+\end{frame}
+
+% -- SLIDE: Code Task 6 --
+\begin{frame}[fragile]{Code - Eigenvector method}
+\vspace{-0.3em}
+\begin{lstlisting}
+Vn = V(:, num_signals+1:end);
+Ln = dd(num_signals+1:end);
+R_noise_only_inv = Vn * diag(1 ./ Ln) * Vn';
+
+P_EV = zeros(size(theta));
+for n = 1:length(theta)
+    DOA = theta(n);
+    phi = -kd * sin(DOA * pi / 180);
+    a   = exp(1i*phi).^(0:M-1)';
+    P_EV(n) = 1 / (a' * R_noise_only_inv * a);
+end
+\end{lstlisting}
+
+\smallskip
+\scriptsize
+Key difference from MUSIC: each noise eigenvector weighted by $1/\lambda_i$ instead of unity.
+Both methods rely on correct estimation of $K$ number of sources.
+\end{frame}
+
+% ==================================================================
+\section{Incorrect Source Count}
+% ==================================================================
+
+\begin{frame}{Task 7 - Effect of incorrect $\hat{K}$ on MUSIC \& EV}
+\vspace{-0.3em}
+$\hat{K}=0$ (no signal subspace. Noise subspace is the full space):
+\fullfig[height=0.60\textheight]{figure_11.pdf}
+
+\vspace{-0.3em}
+\scriptsize
+With $\hat{K}\!=\!0$ the ``noise subspace'' spans all $M$ dimensions, so $\mathbf{U}_n\mathbf{U}_n^H = \mathbf{I}$.
+MUSIC spectrum becomes $P = M/\|\mathbf{a}\|^2 = 1$ flat, no peaks. EV spectrum is $1/(\mathbf{a}^H\mathbf{R}^{-1}\mathbf{a})$ = Capon.
+\end{frame}
+
+\begin{frame}{Task 7 - $\hat{K}=1$}
+\vspace{-0.3em}
+\fullfig[height=0.65\textheight]{figure_12.pdf}
+
+\vspace{-0.3em}
+\scriptsize
+With $\hat{K}\!=\!1$: one signal eigenvector is misclassified as noise.
+Only one peak is visible; the algorithm cannot resolve both sources.
+The noise subspace is ``contaminated'' by signal energy $\Rightarrow$ the orthogonality condition
+$\mathbf{U}_n^H\mathbf{a}(\theta_k)=\mathbf{0}$ no longer holds for both DOAs.
+\end{frame}
+
+\begin{frame}{Task 7 - $\hat{K}=3$}
+\vspace{-0.3em}
+\fullfig[height=0.65\textheight]{figure_13.pdf}
+
+\vspace{-0.3em}
+\scriptsize
+With $\hat{K}\!=\!3$: the noise subspace loses one dimension.
+Both true peaks remain, but a spurious third peak may appear,
+and the noise floor rises because the noise subspace is under represented.
+\end{frame}
+
+% -- SLIDE: Code Task 7 --
+\begin{frame}[fragile]{Code - Incorrect source count}
+\vspace{-0.3em}
+\begin{lstlisting}
+Ns_estimates = [0, 1, 3];
+
+for k = 1:length(Ns_estimates)
+    Ns_est = Ns_estimates(k);
+    Vn = V(:, Ns_est+1 : end);
+    Ln = dd(Ns_est+1 : end);
+
+    for n = 1:length(theta)
+        DOA = theta(n);
+        phi = -kd * sin(DOA * pi / 180);
+        a   = exp(1i * phi) .^ (0:M-1)';
+
+        % MUSIC
+        P_music_task7(n) = 1 / (a' * (Vn * Vn') * a);
+
+        % Eigenvector
+        P_EV_task7(n) = 1 / (a' * (Vn * diag(1./Ln) * Vn') * a);
+    end
+end
+\end{lstlisting}
+
+\smallskip
+\scriptsize
+Correct $\hat{K}$ is critical: underestimation loses sources, overestimation raises the noise floor
+and can introduce false peaks.
+\end{frame}
+
+% ==================================================================
+\section*{Summary}
+% ==================================================================
+
+\begin{frame}{Summary}
+\begin{enumerate}\setlength\itemsep{3pt}
+  \item \textbf{Correlation matrix (1):} Structure expected from a ULA; diagonal $\approx \sigma_s^2 + \sigma_n^2$.
+  \item \textbf{DAS (2):} Cannot resolve sources.
+  \item \textbf{Capon (3):} Data-adaptive; resolves the two sources by suppressing interference.
+  \item \textbf{Eigenvalues (4):} Two dominant eigenvalues confirm $K\!=\!2$ sources; gap separates signal and noise subspaces.
+  \item \textbf{MUSIC (5):} Super-resolution via noise-subspace orthogonality; sharp peaks at true DOAs.
+  \item \textbf{Eigenvector (6):} Eigenvalue-weighted noise subspace; similar resolution to MUSIC.
+  \item \textbf{Incorrect $\hat{K}$ (7):} Underestimation merges/loses peaks; overestimation raises noise floor.
+\end{enumerate}
+\end{frame}
+
+\end{document}

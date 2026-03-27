@@ -32,11 +32,13 @@ end
 uInd = mlStart:mlStop;
 uTmp = u(uInd);
 
-ind = find(db(abs(W(uInd))) >= mlMax - 3);
-Result.Three_dB = asin(uTmp(ind(end))) - asin(uTmp(ind(1)));
+ind3 = find(db(abs(W(uInd))) >= mlMax - 3);
+Result.Three_dB = asin(uTmp(ind3(end))) - asin(uTmp(ind3(1)));
+Result.Three_dB_u = uTmp(ind3(end)) - uTmp(ind3(1));
 
-ind = find(db(abs(W(uInd))) >= mlMax - 6);
-Result.Six_dB = asin(uTmp(ind(end))) - asin(uTmp(ind(1)));
+ind6 = find(db(abs(W(uInd))) >= mlMax - 6);
+Result.Six_dB = asin(uTmp(ind6(end))) - asin(uTmp(ind6(1)));
+Result.Six_dB_u = uTmp(ind6(end)) - uTmp(ind6(1));
 
 Result.maxSL = max(db(abs(W([1:mlStart mlStop:end])))) - mlMax;
 
