@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Task 1: Pulse Compression}{3}{0}{1}
+\beamer@sectionintoc {2}{Task 2: Virtual Array}{6}{0}{2}
+\beamer@sectionintoc {3}{Task 3: Delay-And-Sum}{8}{0}{3}
+\beamer@sectionintoc {4}{Task 4: Tapering}{13}{0}{4}

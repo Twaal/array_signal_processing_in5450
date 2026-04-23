@@ -1,0 +1,19 @@
+\frametitle{Hamming Tapering on Array and Waveform}
+\begin{lstlisting}[style=pycode]
+w_rx = np.hamming(Nrx)
+w_tx = np.hamming(len(s_tx_up))
+s_tx_up_tapered = s_tx_up * w_tx
+
+# Tapered pulse compression + weighted DAS
+tdma_compressed_tapered = ...
+image_tapered = vectorized_das_weighted(
+    tdma_compressed_tapered, grid_x, grid_y,
+    tx_pos, rx_pos, fs, c, rx_weights=w_rx
+)
+\end{lstlisting}
+\small
+Measured trade-off from notebook output:
+\begin{itemize}
+  \item PSL improves from \(-18.0\) dB to \(-32.7\) dB
+  \item Mainlobe widens: axial 2.00 \(\rightarrow\) 4.00 cm, lateral 4.00 \(\rightarrow\) 6.00 cm
+\end{itemize}

@@ -1,0 +1,256 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\graphicspath{{figs/}}
+
+\newcommand{\fullfig}[2][]{%
+  \centering
+  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio,#1]{#2}%
+}
+
+\lstdefinestyle{pycode}{
+  language=Python,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{blue!70!black},
+  commentstyle=\color{green!40!black},
+  stringstyle=\color{orange!50!black},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible
+}
+
+\title[IN5450 Project 3]{IN5450 MIMO Pulse-Echo Imaging\\Project 3 Final Presentation}
+\author{Theodor Waalberg}
+\institute{University of Oslo}
+\date{April 2026}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Agenda}
+\tableofcontents
+\end{frame}
+
+\section{Task 1: Pulse Compression}
+
+\begin{frame}[fragile]{Synthetic Replicas and Compression Pipeline}
+I used two matched replicas for the coded transmissions:
+\begin{itemize}
+  \item LFM upchirp for TDMA and one CDMA code channel
+  \item LFM downchirp for the second CDMA code channel
+\end{itemize}
+
+\begin{lstlisting}[style=pycode]
+alpha = B / Tp
+t_p = np.arange(0, Tp, 1 / fs)
+
+s_tx_up = np.exp(1j * 2*np.pi * ((fc - B/2)*t_p + alpha*t_p**2/2))
+s_tx_down = np.exp(1j * 2*np.pi * ((fc + B/2)*t_p - alpha*t_p**2/2))
+
+def pulse_compression(data, replica):
+    corr = scipy.signal.correlate(data, replica, mode="full")
+    return corr[len(replica) - 1:]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Single-Channel Result Before and After Compression}
+\fullfig{plot_01.png}
+\end{frame}
+
+\begin{frame}{Practical Time Resolution (FWHM)}
+\begin{columns}[T]
+\begin{column}{0.58\textwidth}
+\fullfig[height=0.68\textheight]{plot_02.png}
+\end{column}
+\begin{column}{0.42\textwidth}
+\small
+\textbf{Measured from one compressed timeseries:}
+\begin{itemize}
+  \item Theoretical: $\Delta\tau = 1/B = 100.00\,\mu s$
+  \item Measured FWHM: $88.60\,\mu s$
+  \item Ratio: $0.886$
+\end{itemize}
+The compressed peak is much narrower than the original waveform extent, which is exactly what we need for range resolution.
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Task 2: Virtual Array}
+
+\begin{frame}[fragile]{Physical vs Virtual Array (1 Tx and 2 Tx)}
+\begin{columns}[T]
+\begin{column}{0.56\textwidth}
+\fullfig[height=0.63\textheight]{plot_03.png}
+\end{column}
+\begin{column}{0.44\textwidth}
+\small
+\begin{lstlisting}[style=pycode]
+va_1tx = (tx_pos[0] + rx_pos) / 2
+va_2tx = np.array([
+    (tx + rx_pos) / 2 for tx in tx_pos
+]).flatten()
+\end{lstlisting}
+\textbf{Observation:}
+Adding the second transmitter doubles the virtual channels from 32 to 64 and fills the synthetic aperture more densely. This is the main reason the full TDMA image becomes sharper laterally.
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Theoretical Resolution Numbers}
+Using $\lambda=c/f_c$ and virtual aperture width $L_{va}$:
+\begin{align*}
+\Delta\theta &= \frac{\lambda}{L_{va}} \\
+\Delta x &= R\,\Delta\theta \quad (R=4\,m) \\
+\Delta y &= \frac{c}{2B}
+\end{align*}
+
+\small
+From the notebook output:
+\begin{itemize}
+  \item $\lambda = 3.40\,\text{cm}$, $L_{va} = 0.5355\,\text{m}$
+  \item Lateral angular resolution: $\Delta\theta = 0.0635\,\text{rad}$ ($3.64^\circ$)
+  \item Lateral resolution at 4 m: $\Delta x = 25.40\,\text{cm}$
+  \item Axial resolution: $\Delta y = 1.70\,\text{cm}$
+\end{itemize}
+\end{frame}
+
+\section{Task 3: Delay-And-Sum}
+
+\begin{frame}[fragile]{DAS Implementation (True Bistatic, Nearest Neighbor)}
+\begin{lstlisting}[style=pycode]
+def vectorized_das(data, grid_x, grid_y, tx_positions, rx_positions, fs, c):
+    GX, GY = np.meshgrid(grid_x, grid_y)
+    image = np.zeros((len(grid_y), len(grid_x)), dtype=complex)
+    for itx in range(n_tx):
+        R_tx = np.sqrt((tx_positions[itx] - GX)**2 + GY**2)
+        for irx in range(n_rx):
+            R_rx = np.sqrt((rx_positions[irx] - GX)**2 + GY**2)
+            R_total = R_tx + R_rx
+            idx_map = np.round(R_total / c * fs).astype(int)
+            valid = (idx_map >= 0) & (idx_map < Nt_data)
+            idx_safe = np.clip(idx_map, 0, Nt_data - 1)
+            pixel_values = data[idx_safe, irx, itx]
+            pixel_values[~valid] = 0.0
+            image += pixel_values
+    return image
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Full TDMA Image in dB (2 Tx)}
+\begin{columns}[T]
+\begin{column}{0.62\textwidth}
+\fullfig[height=0.66\textheight]{plot_04.png}
+\end{column}
+\begin{column}{0.38\textwidth}
+\small
+Peak reflector from the reconstructed image:
+\begin{itemize}
+  \item $x = -1.400\,m$
+  \item $y = 2.800\,m$
+\end{itemize}
+This location is used as reference for the slice-based resolution estimate.
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Measured vs Theoretical Resolution}
+\begin{columns}[T]
+\begin{column}{0.62\textwidth}
+\fullfig[height=0.66\textheight]{plot_07.png}
+\end{column}
+\begin{column}{0.38\textwidth}
+\small
+\textbf{Measured (from -3 dB width):}
+\begin{itemize}
+  \item Axial FWHM: $2.00\,\text{cm}$
+  \item Lateral FWHM: $4.00\,\text{cm}$
+\end{itemize}
+\textbf{Theory from Task 2:}
+\begin{itemize}
+  \item Axial: $1.70\,\text{cm}$
+  \item Lateral: $25.40\,\text{cm}$
+\end{itemize}
+The practical lateral width is much smaller around this point target than the simple aperture formula predicts.
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Single-Transmit TDMA vs Full TDMA}
+\fullfig{plot_05.png}
+\small
+With only one transmitter, the reflector is still visible, but the right-side arc artifact and broader energy spread are clearly stronger than in the full 2-Tx case.
+\end{frame}
+
+\begin{frame}{CDMA Image and Cross-Talk Pollution}
+\begin{columns}[T]
+\begin{column}{0.62\textwidth}
+\fullfig[height=0.66\textheight]{plot_06.png}
+\end{column}
+\begin{column}{0.38\textwidth}
+\small
+CDMA is reconstructed by matched filtering with both chirp replicas and summing DAS outputs.
+
+The bright streaks and structured haze come from imperfect code separation and residual cross-correlation leakage between upchirp and downchirp channels.
+
+Pollution level is typically in the \(-20\) to \(-30\) dB range around the main target in this map.
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Task 4: Tapering}
+
+\begin{frame}[fragile]{Hamming Tapering on Array and Waveform}
+\begin{lstlisting}[style=pycode]
+w_rx = np.hamming(Nrx)
+w_tx = np.hamming(len(s_tx_up))
+s_tx_up_tapered = s_tx_up * w_tx
+
+# Tapered pulse compression + weighted DAS
+tdma_compressed_tapered = ...
+image_tapered = vectorized_das_weighted(
+    tdma_compressed_tapered, grid_x, grid_y,
+    tx_pos, rx_pos, fs, c, rx_weights=w_rx
+)
+\end{lstlisting}
+\small
+Measured trade-off from notebook output:
+\begin{itemize}
+  \item PSL improves from \(-18.0\) dB to \(-32.7\) dB
+  \item Mainlobe widens: axial 2.00 \(\rightarrow\) 4.00 cm, lateral 4.00 \(\rightarrow\) 6.00 cm
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Original vs Hamming (Full TDMA)}
+\fullfig{plot_09.png}
+\end{frame}
+
+\begin{frame}{Original vs Hamming (Single-Tx TDMA)}
+\fullfig{plot_10.png}
+\end{frame}
+
+\section*{Summary}
+\begin{frame}{Summary}
+\begin{itemize}
+  \item Pulse compression gave the expected narrow peak and practical $\Delta\tau$ close to theory.
+  \item Using both transmitters expanded the virtual aperture and improved image sharpness.
+  \item True bistatic DAS gave the cleanest TDMA image. CDMA showed visible cross-talk artifacts.
+  \item Hamming tapering reduced sidelobes significantly, with the expected loss in mainlobe width.
+\end{itemize}
+\end{frame}
+
+\end{document}
